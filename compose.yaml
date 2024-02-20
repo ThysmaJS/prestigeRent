@@ -1,21 +1,40 @@
-version: '3'
-
+version: '3.7'
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-16}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
+    php:
+        image: php:8.0-fpm
+        container_name: prestigeRent
+        volumes:
+            - ./project:/var/www/html
+        ports:
+            - "9000:9000"
+
+    mailer:
+        image: schickling/mailcatcher
+        ports: 
+            - "1025:1025"
+            - "1080:1080"
+
+    database:
+        image: postgres:13-alpine
+        environment:
+          POSTGRES_DB: ${POSTGRES_DB:-PrestigeRent}
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
-    volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+          POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+          POSTGRES_USER: ${POSTGRES_USER:-PrestigeRent}
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: prestige@rent.com
+            PGADMIN_DEFAULT_PASSWORD: admin
+        ports:
+            - "5050:80"
+        depends_on:
+            - database
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  db-data:

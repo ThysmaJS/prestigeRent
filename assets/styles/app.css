@@ -1,3 +1,74 @@
-body {
-    background-color: skyblue;
+@font-face {
+    font-family: 'Astron';
+    src: url('../fonts/Astron.otf') format('opentype');
+    /* Ajoutez d'autres déclarations de format si nécessaire */
+}
+
+@font-face {
+    font-family: 'Arapey';
+    src: url('../fonts/Arapey-Regular.ttf') format('truetype');
+    /* Ajoutez d'autres déclarations de format si nécessaire */
+}
+
+
+* {
+    background-color: #FFF8EF;
+}
+
+/* Reset des marges et des rembourrages pour le header */
+header {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style de base pour le header */
+header {
+    color: #2F48C9; /* Couleur du texte */
+    padding: 5px;
+    width: 80%; 
+    margin: 0 auto;     
+    align-items: center;
+    justify-content: space-between; 
+    display: flex;
+/* Rembourrage interne */
+}
+
+/* Style pour le titre */
+header h1 {
+    margin: 0; /* Supprime les marges par défaut */
+    font-family: 'Astron', sans-serif;
+    font-weight: 100;
+}
+
+/* Style pour la navigation */
+nav ul {
+    list-style: none; /* Supprime les puces de liste */
+    padding: 0; /* Supprime le rembourrage de la liste */
+    margin: 0; /* Supprime la marge de la liste */
+}
+
+nav ul li {
+    display: inline; /* Affiche les éléments de la liste en ligne */
+    margin-right: 20px; /* Espacement entre les éléments */
+}
+
+nav ul li a {
+    color: #808080; /* Couleur du lien */
+    text-decoration: none; /* Supprime le soulignement du lien */
+    font-family: 'Arapey', sans-serif;
+    font-weight: 400;
+}
+
+nav ul li a:hover {
+    /* text-decoration: underline;  */
+    color: #2F48C9;
+    transition: 0.3s;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #2F48C9;/* Couleur et style de la ligne */
+    margin: 0;
+    margin-top: 15px;
+    padding: 0;
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Titre par défaut{% endblock %}</title>
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<header>
+    <h1>{% block header %}Prestige Rent{% endblock %}</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Louer ma voiture</a></li>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Historique</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Mon profil</a></li>
+        </ul>
+    </nav>
+</header>
+<hr class="separator">
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {# <p>Droits d'auteur &copy; {{ "now"|date("Y") }}</p> #}
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

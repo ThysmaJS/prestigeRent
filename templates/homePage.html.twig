@@ -24,14 +24,52 @@
     </nav>
 </header>
 <hr class="separator">
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+<main>
+    {% block content %}
+    <div class="navbar">
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/berline_bar.png') }}" alt="Berline">
+            <span class="image-alt">Berline</span>
+        </a>
+        
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/citadine_bar.png') }}" alt="Citadine">
+            <span class="image-alt">Citadine</span>
+        </a>
+        
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/collection_bar.png') }}" alt="Collection">
+            <span class="image-alt">Collection</span>
+        </a>
+        
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/coupe_bar.png') }}" alt="Coupe">
+            <span class="image-alt">Coupe</span>
+        </a>
+        
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/limousine_bar.png') }}" alt="Limousine">
+            <span class="image-alt">Limousine</span>
+        </a>
+        
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/sportive_bar.png') }}" alt="Sportive">
+            <span class="image-alt">Sportive</span>
+        </a>
+        
+        <a href="#" class="nav-item">
+            <img src="{{ asset('../assets/images/tout_terrain_bar.png') }}" alt="Tout terrain">
+            <span class="image-alt">Tout terrain</span>
+        </a>
+    </div>
+    {% endblock %}
+</main>
 
-    <footer>
-        {# <p>Droits d'auteur &copy; {{ "now"|date("Y") }}</p> #}
-    </footer>
 
-    <script src="scripts.js"></script>
+<footer>
+    {# <p>Droits d'auteur &copy; {{ "now"|date("Y") }}</p> #}
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>

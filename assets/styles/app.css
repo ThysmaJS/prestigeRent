@@ -72,3 +72,32 @@ nav ul li a:hover {
     margin-top: 15px;
     padding: 0;
 }
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0; /* Augmenter légèrement le padding */
+    margin-top: 10px;
+}
+
+.nav-item {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 40px; /* Augmenter l'espace entre les éléments */
+}
+
+.nav-item img {
+    width: 80px; /* Augmenter la taille de l'image */
+    height: auto; /* Pour conserver les proportions de l'image */
+}
+
+.image-alt {
+    display: block; /* Pour que le texte apparaisse sur une ligne différente */
+    margin-top: 5px; /* Espacement entre l'image et le texte */
+}

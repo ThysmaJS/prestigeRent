@@ -93,11 +93,82 @@ nav ul li a:hover {
 }
 
 .nav-item img {
-    width: 80px; /* Augmenter la taille de l'image */
+    width: 100px; /* Augmenter la taille de l'image */
     height: auto; /* Pour conserver les proportions de l'image */
+
+}
+/* IMAGES */
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+margin-left: 10%;
+margin-right: 10%;
+padding-right: 10%;
+padding-left: 10%;
 }
 
-.image-alt {
-    display: block; /* Pour que le texte apparaisse sur une ligne différente */
-    margin-top: 5px; /* Espacement entre l'image et le texte */
+.photo-card {
+    margin: 20px;
+    width: calc(12,5% - 1px); /* Largeur de chaque carte avec un espace entre */
+    display: inline-block; /* Afficher chaque carte en ligne */
 }
+
+.photo-card img {
+    width: 200px; /* Remplit complètement la largeur de la carte */
+    height: 200px;
+    display: block;
+    object-fit: cover;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.photo-details {
+    padding: 10px;
+    background-color: #2F48C9;
+    border-radius: 0 0 8px 8px; /* Coins arrondis uniquement en bas */
+    margin-top: -5px; /* Décalage négatif pour se superposer à l'image */
+}
+
+.photo-details h3 {
+    margin-top: 0;
+    background: none;
+    color : #FFF8EF;
+}
+
+.photo-details p {
+    margin: 5px 0;
+    background: none;
+    color: #FFF8EF;
+}
+
+.photo-details p:last-child {
+    margin-bottom: 0; /* Supprime la marge du dernier paragraphe */
+    background: none;
+    color: #FFF8EF;
+}
+
+footer {
+    background-color: #2F48C9;
+    color: #FFF8EF;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    background: none;
+}
+
+footer a {
+    color: #FFF8EF;
+    text-decoration: none;
+    background: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+

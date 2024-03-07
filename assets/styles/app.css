@@ -1,19 +1,22 @@
 @font-face {
     font-family: 'Astron';
-    src: url('../fonts/Astron.otf') format('opentype');
+    src: url('fonts/Astron.otf') format('opentype');
     /* Ajoutez d'autres déclarations de format si nécessaire */
 }
 
 @font-face {
     font-family: 'Arapey';
-    src: url('../fonts/Arapey-Regular.ttf') format('truetype');
+    src: url('fonts/Arapey-Regular.ttf') format('truetype');
     /* Ajoutez d'autres déclarations de format si nécessaire */
 }
 
 
 * {
     background-color: #FFF8EF;
+    font-family: 'Arapey', sans-serif;
 }
+
+
 
 /* Reset des marges et des rembourrages pour le header */
 header {
@@ -53,23 +56,23 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #808080; /* Couleur du lien */
+    color: #000000; /* Couleur du lien */
     text-decoration: none; /* Supprime le soulignement du lien */
     font-family: 'Arapey', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 nav ul li a:hover {
     /* text-decoration: underline;  */
     color: #2F48C9;
-    transition: 0.3s;
+    font-weight: 700;
 }
 
 .separator {
     border: none;
-    border-top: 1px solid #2F48C9;/* Couleur et style de la ligne */
+    border-top: 1px solid #000000;/* Couleur et style de la ligne */
     margin: 0;
-    margin-top: 15px;
+    margin-top: 10px;
     padding: 0;
 }
 
@@ -77,7 +80,7 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0; /* Augmenter légèrement le padding */
+    padding: 5px 0; /* Augmenter légèrement le padding */
     margin-top: 10px;
 }
 
@@ -85,7 +88,6 @@ nav ul li a:hover {
     text-align: center;
     text-decoration: none;
     color: #333;
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,10 +106,10 @@ nav ul li a:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 20px;
-margin-left: 10%;
-margin-right: 10%;
-padding-right: 10%;
-padding-left: 10%;
+margin-left: 5%;
+margin-right: 5%;
+padding-right: 5%;
+padding-left: 5%;
 }
 
 .photo-card {
@@ -117,38 +119,15 @@ padding-left: 10%;
 }
 
 .photo-card img {
-    width: 200px; /* Remplit complètement la largeur de la carte */
-    height: 200px;
+    width: 275px; /* Remplit complètement la largeur de la carte */
+    height: 275px;
     display: block;
     object-fit: cover;
     /* border-radius: 8px; */
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
-.photo-details {
-    padding: 10px;
-    background-color: #2F48C9;
-    border-radius: 0 0 8px 8px; /* Coins arrondis uniquement en bas */
-    margin-top: -5px; /* Décalage négatif pour se superposer à l'image */
-}
 
-.photo-details h3 {
-    margin-top: 0;
-    background: none;
-    color : #FFF8EF;
-}
-
-.photo-details p {
-    margin: 5px 0;
-    background: none;
-    color: #FFF8EF;
-}
-
-.photo-details p:last-child {
-    margin-bottom: 0; /* Supprime la marge du dernier paragraphe */
-    background: none;
-    color: #FFF8EF;
-}
 
 footer {
     background-color: #2F48C9;

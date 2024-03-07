@@ -75,24 +75,19 @@
 				<div class="photo-gallery">
 					{% for image in images %}
 						<div class="photo-card">
-							<img src="{{ asset('../assets/images/cars/' ~ image) }}" alt="Photo">
+							<img src="{{ asset('images/' ~ image.imagePath) }}" alt="{{ image.title }}">
 							<div class="photo-details">
-								<h3>Titre de l'image</h3>
-								<p>Description de l'image</p>
-								<p>Prix: $10.00</p>
+								<h3>{{ image.title }}</h3>
+								<p>{{ image.description }}</p>
+								<p>Prix: ${{ image.price }}</p>
 							</div>
 						</div>
 					{% endfor %}
 				</div>
+
 			</div>
 		{% endblock %}
 	</body>
-</html>
-</main>
-<footer>
-    <p>Droits d'auteur &copy; {{ "now"|date("Y") }}</p>
-</footer>
-<script src="scripts.js">
-</script>
-</body>
-</html>
+</html></main><footer>
+<p>Droits d'auteur &copy;
+	{{ "now"|date("Y") }}</p></footer><script src="scripts.js"></script></body></html>

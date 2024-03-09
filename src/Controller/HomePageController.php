@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomePageController extends AbstractController
 {
-    #[Route('/homePage', name: 'app_home_page')]
+    #[Route('/', name: 'index')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $images = $entityManager->getRepository(Image::class)->findAll();

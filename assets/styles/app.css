@@ -12,6 +12,10 @@
 
 
 * {
+    font-family: 'Arapey', sans-serif;
+}
+
+body {
     background-color: #FFF8EF;
     font-family: 'Arapey', sans-serif;
 }
@@ -151,3 +155,51 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* PROFILE */
+.container {
+    background-color: white;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.details {
+    flex-grow: 1;
+}
+
+.edit-profile input[type="text"],
+.edit-profile input[type="email"],
+.edit-profile input[type="tel"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-profile button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-profile button:hover {
+    background-color: #0056b3;
+}

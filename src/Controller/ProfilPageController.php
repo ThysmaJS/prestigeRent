@@ -5,16 +5,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface; // Importer TokenStorageInterface
 use Symfony\Component\Security\Core\User\UserInterface; // Importer UserInterface
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted; // Importer IsGranted
 
 class ProfilPageController extends AbstractController
 {
     #[Route('/profil', name: 'profil_page')]
+    #[IsGranted('ROLE_USER')]
     public function index(TokenStorageInterface $tokenStorage): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
 
         // Récupérer le token
         $token = $tokenStorage->getToken();

@@ -1,0 +1,31 @@
+{% include 'partials/_navbar.html.twig' %}
+
+<body>
+    <div class="registration-form">
+        <h1>Inscription</h1>
+
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+            <div class="form-group">
+                {{ form_row(registrationForm.username, {'attr': {'class': 'form-control', 'placeholder': 'Pseudo'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+            </div>
+            <div class="form-check">
+                {{ form_row(registrationForm.agreeTerms, {'label': 'je souscris aux conditions'}) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</body>
+</html>

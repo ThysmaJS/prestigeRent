@@ -106,6 +106,7 @@ nav ul li a:hover {
     margin: 20px;
     width: calc(12,5% - 1px);
     display: inline-block;
+    position: relative;
 }
 
 .photo-card img {
@@ -115,7 +116,34 @@ nav ul li a:hover {
     object-fit: cover;
     border-radius: 5px;
     border: 1px solid #000000;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Ajoute une transition pour l'effet de transformation et de filtre */
 }
+
+.photo-card:hover img {
+    transform: scale(1.05); /* Augmenter légèrement la taille de l'image au survol */
+    filter: brightness(75%); /* Appliquer un filtre de luminosité à l'image survolée */
+}
+
+.photo-card::after {
+    content: "Voir l'offre"; /* Ajoute un pseudo-élément pour le texte */
+    position: absolute; /* Position absolue par rapport à son conteneur */
+    bottom: 90%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
+    color: white; /* Couleur du texte */
+    padding: 5px 10px; /* Espacement intérieur */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 12px; /* Taille de la police */
+    white-space: nowrap; /* Empêche le texte de se retourner sur plusieurs lignes */
+    z-index: 1; /* Place le texte au premier plan */
+    opacity: 0; /* Rend le pseudo-élément invisible par défaut */
+    transition: opacity 0.3s ease; /* Ajoute une transition en douceur */
+}
+
+.photo-card:hover::after {
+    opacity: 1; /* Rend le pseudo-élément visible au survol */
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
+}
+
 
 footer {
     background-color: #2F48C9;

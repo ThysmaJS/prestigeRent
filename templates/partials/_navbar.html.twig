@@ -1,41 +1,42 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 {% endblock %}
-<header>
-	<h1>
-		{% block header %}Prestige Rent
-		{% endblock %}
-	</h1>
-	<nav>
-		<ul>
-			<li>
-				<a href="#">Louer ma voiture</a>
-			</li>
-			<li>
-				<a href="{{ path('carsPage') }}">Accueil</a>
-			</li>
-			<li>
-				<a href="#">Historique</a>
-			</li>
-			<li>
-				<a href="#">Favoris</a>
-			</li>
-			<li>
-				<a href="#">Messages</a>
-			</li>
-			<li>
-				<a href="{{ path('profil_page') }}">Mon profil</a>
-			</li>
-			<li>
-				<a href="{{ path('app_register') }}">S'inscrire</a>
-			</li>
-			<li>
-				{% if app.user %}
-					<a href="{{ path('app_logout') }}">Déconnexion</a>
-				{% endif %}
-			</li>
-		</ul>
-	</nav>
 
+<header class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-3xl font-bold">
+            {% block header %}Prestige Rent{% endblock %}
+        </h1>
+        <nav>
+            <ul class="flex gap-4">
+                <li>
+                    <a href="#" class="hover:text-gray-300">Louer ma voiture</a>
+                </li>
+                <li>
+                    <a href="{{ path('carsPage') }}" class="hover:text-gray-300">Accueil</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:text-gray-300">Historique</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:text-gray-300">Favoris</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:text-gray-300">Messages</a>
+                </li>
+                <li>
+                    <a href="{{ path('profil_page') }}" class="hover:text-gray-300">Mon profil</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}" class="hover:text-gray-300">S'inscrire</a>
+                </li>
+                <li>
+                    {% if app.user %}
+                        <a href="{{ path('app_logout') }}" class="hover:text-gray-300">Déconnexion</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
 <hr class="separator">

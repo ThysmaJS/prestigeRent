@@ -2,65 +2,80 @@
 
 
 {% block content %}
-	<div class="navbar">
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/berline_bar.png') }}" alt="Berline">
-			<span class="image-alt">Berline</span>
-		</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location de Voitures</title>
+</head>
+<body class="bg-gray-100">
 
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/citadine_bar.png') }}" alt="Citadine">
+    <main class="container mx-auto my-8">
+        <div class="flex justify-center gap-4 mb-8">
+            <a href="#" class="flex flex-col items-center">
+                <img src="{{ asset('../assets/images/berline_bar.png') }}" alt="Berline" class="w-24 h-auto">
+                <span class="mt-2">Berline</span>
+            </a>
+<a href="#" class="flex flex-col items-center">
+			<img src="{{ asset('../assets/images/citadine_bar.png') }}" alt="Citadine" class="w-24 h-auto">
 			<span class="image-alt">Citadine</span>
 		</a>
 
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/collection_bar.png') }}" alt="Collection">
+		<a href="#" class="flex flex-col items-center">
+			<img src="{{ asset('../assets/images/collection_bar.png') }}" alt="Collection" class="w-24 h-auto">
 			<span class="image-alt">Collection</span>
 		</a>
 
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/coupe_bar.png') }}" alt="Coupe">
+		<a href="#" class="flex flex-col items-center">
+			<img src="{{ asset('../assets/images/coupe_bar.png') }}" alt="Coupe" class="w-24 h-auto">
 			<span class="image-alt">Coupe</span>
 		</a>
 
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/limousine_bar.png') }}" alt="Limousine">
+		<a href="#" class="flex flex-col items-center">
+			<img src="{{ asset('../assets/images/limousine_bar.png') }}" alt="Limousine" class="w-24 h-auto">
 			<span class="image-alt">Limousine</span>
 		</a>
 
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/sportive_bar.png') }}" alt="Sportive">
+		<a href="#" class="flex flex-col items-center">
+			<img src="{{ asset('../assets/images/sportive_bar.png') }}" alt="Sportive" class="w-24 h-auto">
 			<span class="image-alt">Sportive</span>
 		</a>
 
-		<a href="#" class="nav-item">
-			<img src="{{ asset('../assets/images/tout_terrain_bar.png') }}" alt="Tout terrain">
+		<a href="#" class="flex flex-col items-center">
+			<img src="{{ asset('../assets/images/tout_terrain_bar.png') }}" alt="Tout terrain" class="w-24 h-auto">
 			<span class="image-alt">Tout terrain</span>
 		</a>
-	</div>
-	<hr
-	class="separator">
+        </div>
 
-	{# Affichage des images dynamiques #}
-    <div class="photo-gallery">
-        {% for car in cars %}
-            <div class="photo-card">
-                <a href="{{ path('carDetails', {'id': car.id}) }}" class="offre-link">
-                    {# Si la voiture a des images, affichez la première image, sinon, affichez une image par défaut #}
+            <hr class="border-t border-gray-400">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
+            {% for car in cars %}
+            <div class="bg-white shadow-md rounded-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-lg">
+                <a href="{{ path('carDetails', {'id': car.id}) }}" class="block">
                     {% if car.images|length > 0 %}
-                        <img src="{{ asset('images/' ~ car.images[0].imagePath) }}" alt="{{ car.title }}">
+                    <img src="{{ asset('images/' ~ car.images[0].imagePath) }}" alt="{{ car.title }}" class="w-full h-48 object-cover">
                     {% else %}
-                        <img src="{{ asset('../../assets/images/cars/') }}" alt="Image par défaut">
+                    <img src="{{ asset('../assets/images/default_car_image.png') }}" alt="Image par défaut" class="w-full h-48 object-cover">
                     {% endif %}
                 </a>
-                <div class="photo-details">
-                    <h3>{{ car.title }}</h3>
-                    <p>{{ car.description }}</p>
-                    <p>Prix: ${{ car.price }}</p>
-                    <!-- Changer 'carDetails' avec le nom de votre route pour la page de détail -->
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">{{ car.title }}</h3>
+                    <p class="text-gray-600">{{ car.description }}</p>
+                    <p class="text-green-600 font-semibold mt-2">Prix: ${{ car.price }}</p>
                 </div>
             </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
 {% endblock %}
-{% include 'partials/_footer.html.twig' %}

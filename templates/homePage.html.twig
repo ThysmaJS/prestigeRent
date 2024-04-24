@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}PrestigeRent{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     {% endblock %}
+    <style>
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Place la vidéo en arrière-plan */
+        }
+    </style>
 </head>
+
 <body class="HomePage">
     <video class="background-video" autoplay muted loop>
         <source src="{{ asset('../assets/styles/videos/homepageBackground.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <header class="HomePage-header">
-        <h1>{{ block('title') }}</h1>
-        <p>Conduisez l'excellence !</p>
-        <div class="HomePage-button"><a href="{{ path('carsPage') }}">Notre sélection</a></div>
+    <header class="HomePage-header flex flex-col items-center justify-center h-screen text-white">
+        <h1 class="text-4xl font-bold">{{ block('title') }}</h1>
+        <p class="text-lg">Conduisez l'excellence !</p>
+        <div class="HomePage-button mt-8">
+            <a href="{{ path('carsPage') }}" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300">Notre sélection</a>
+        </div>
     </header>
 </body>
+
 </html>

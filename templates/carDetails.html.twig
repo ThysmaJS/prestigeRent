@@ -37,14 +37,10 @@
             <div class="bg-white shadow-md rounded-md p-6">
                 <h2 class="text-2xl font-bold mb-4">Caractéristiques</h2>
                 <ul>
-                    <li>Marque: Toyota</li>
-                    <li>Modèle: Camry</li>
-                    <li>Année: 2022</li>
-                    <li>Couleur: Gris</li>
-                    <li>Carburant: Diesel</li>
-                    <li>places: 5</li>
-                    <li>Options: Climatisation</li>
-                    <!-- Add more characteristics if needed -->
+                        <li>Catégorie : {{ car.category}}</li>   
+                        <li>Killométrage : {{ car.mileage }} km</li>
+                        <li>Moteur : {{ car.engineType }} </li>
+                        <li>Nombre de portes : {{ car.numberOfDoors}}</li>                        
                 </ul>
             </div>
             <div class="bg-white shadow-md rounded-md p-6 mt-4">

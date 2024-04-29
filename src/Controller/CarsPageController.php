@@ -124,47 +124,55 @@ class CarsPageController extends AbstractController
     
 
     #[Route('/filter', name: 'filterCars')]
-    public function filterCars(Request $request, CarRepository $carRepository)
+    public function filter(Request $request, CarRepository $carRepository): Response
     {
         $doors = $request->query->get('doors');
         $engineTypes = $request->query->get('engineTypes');
         $minKilometer = $request->query->get('minKilometer');
         $maxKilometer = $request->query->get('maxKilometer');
         $type = $request->query->get('type');
-    
+        $event = $request->query->get('event'); // Nouveau paramètre pour le type d'événement
+        
         // Assurez-vous que les champs min et max ont des valeurs par défaut si elles sont vides
         if (empty($minKilometer)) {
-            $minKilometer = 000000;
+            $minKilometer = 0;
         }
-    
+        
         if (empty($maxKilometer)) {
-            $maxKilometer = 1000000; // Mettez la valeur maximale selon vos besoins
+            $maxKilometer = 100000000; // Mettez la valeur maximale selon vos besoins
         }
-    
+        
         // Requête pour récupérer les voitures filtrées en fonction du nombre de portes, du type de moteur et du kilométrage
         $filteredCarsQuery = $carRepository->createQueryBuilder('c');
-    
+        
         if (!empty($doors)) {
             $filteredCarsQuery->andWhere('c.numberOfDoors IN (:doors)')
                 ->setParameter('doors', $doors);
         }
-    
+        
         if (!empty($engineTypes)) {
             $filteredCarsQuery->andWhere('c.engineType IN (:engineTypes)')
                 ->setParameter('engineTypes', $engineTypes);
         }
-    
+        
         $filteredCarsQuery->andWhere('c.mileage BETWEEN :minKilometer AND :maxKilometer')
             ->setParameter('minKilometer', $minKilometer)
             ->setParameter('maxKilometer', $maxKilometer);
-    
+        
         if (!empty($type)) {
             $filteredCarsQuery->andWhere('c.category = :category')
                 ->setParameter('category', $type);
         }
-    
+        
+        // Si le type d'événement est spécifié, filtrez les voitures en fonction de cet événement
+        if (!empty($event)) {
+            $filteredCarsQuery->andWhere('c.event = :event')
+                ->setParameter('event', $event);
+        }
+        
+        
         $filteredCars = $filteredCarsQuery->getQuery()->getResult();
-    
+        
         return $this->render('carsPage.html.twig', [
             'cars' => $filteredCars,
         ]);

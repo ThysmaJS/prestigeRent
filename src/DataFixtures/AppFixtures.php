@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
         $boites = ['automatique', 'manuel'];
         $events = ['Mariage', 'Anniversaire', 'EVG', 'Buisness'];
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 23; $i++) {
             $car = new Car();
             $car->setTitle('Voiture ' . $i);
             $car->setDescription('Description de la voiture ' . $i);

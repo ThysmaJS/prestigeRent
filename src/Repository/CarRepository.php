@@ -76,6 +76,26 @@ class CarRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByEventType($event)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.event = :event')
+            ->setParameter('event', $event)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByEventTypeAndCategory($event, $category)
+{
+    return $this->createQueryBuilder('c')
+        ->andWhere('c.event = :event')
+        ->andWhere('c.category = :category')
+        ->setParameter('event', $event)
+        ->setParameter('category', $category)
+        ->getQuery()
+        ->getResult();
+}
 }
 
 

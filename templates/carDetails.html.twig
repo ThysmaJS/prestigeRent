@@ -12,11 +12,72 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
     <style>
         /* Ajoutez des styles spécifiques si nécessaire */
+        .slick-carousel img {
+            width: 100%;
+            height: 320px; /* Ajustez la hauteur comme vous le souhaitez */
+            object-fit: cover; /* Pour s'assurer que les images gardent leurs proportions */
+        }
+        /* Style pour les flèches */
+        .slick-prev,
+        .slick-next {
+            font-size: 0;
+            line-height: 0;
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            transform: translateY(-50%);
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slick-prev:hover,
+        .slick-next:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .slick-prev {
+            left: 0;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .slick-next {
+            right: 0;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+
+        .slick-prev::before,
+        .slick-next::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid #fff;
+            border-right: 2px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .slick-prev::before {
+            transform: translate(-50%, -50%) rotate(-135deg);
+        }
+
+        .slick-next::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
     </style>
 </head>
 <body>
 
-<header class="bg-gray-800 text-white py-4">
+<header class="bleuAlone text-white py-4">
     <div class="container mx-auto">
         <h1 class="text-3xl font-bold">{{ car.title }}</h1>
     </div>
@@ -38,7 +99,7 @@
                 <h2 class="text-2xl font-bold mb-4">Caractéristiques</h2>
                 <ul>
                         <li>Catégorie : {{ car.category}}</li>   
-                        <li>Killométrage : {{ car.mileage }} km</li>
+                        <li>Kilométrage : {{ car.mileage }} km</li>
                         <li>Moteur : {{ car.engineType }} </li>
                         <li>Nombre de portes : {{ car.numberOfDoors}}</li>                        
                 </ul>
@@ -46,18 +107,14 @@
             <div class="bg-white shadow-md rounded-md p-6 mt-4">
                 <h2 class="text-2xl font-bold mb-4">Description</h2>
                 <p class="text-gray-700">{{ car.description }}</p>
-                <h2 class="text-2xl font-bold mb-4 mt-4">Prix</h2>
-                <p class="text-green-600 font-semibold">{{ car.price }}</p>
-                <h2 class="text-2xl font-bold mb-4 mt-4">Disponibilité</h2>
-                <p class="text-gray-700">Disponible</p>
-                <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 transition duration-300">Contacter</button>
             </div>
         </div>
     </div>
+    <a href="{{ path('contact_page') }}" class="bleu text-white px-4 py-2 rounded-md mt-4 transition duration-300 block mx-auto max-w-xs text-center">Contacter</a>
     <div class="bg-gray-100 shadow-md rounded-md p-6 mt-8">
         <h2 class="text-2xl font-bold mb-4">Profil</h2>
         <div class="flex items-center space-x-4">
-            <img src="path_to_profile_picture.jpg" alt="Profile Picture" class="w-20 h-20 rounded-full">
+            <img src="{{ asset('../assets/images/avis/pdp4.jpg') }}" alt="Profile Picture" class="w-20 h-20 rounded-full">
             <div>
                 <p class="text-lg font-semibold">Nom: John Doe</p>
                 <p class="text-lg font-semibold">Prénom: Jane</p>
@@ -67,8 +124,6 @@
         </div>
     </div>
 </div>
-
-{% include 'partials/_footer.html.twig' %}
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
@@ -116,6 +171,7 @@
 </script>
 </body>
 </html>
+
 
 {% endblock %}
 

@@ -1,3 +1,6 @@
+*{
+    font-family: 'Arapey', sans-serif; 
+}
 
 @tailwind base;
 @tailwind components;
@@ -9,3 +12,62 @@
     height: 50%;
     min-height: 1px;
 }
+
+/* styles.css */
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+/* Ajoutez vos couleurs personnalisées */
+.customBlue {
+  --color-primary: #2F48C9;
+  background-color: #2F48C9;
+}
+
+.customBeige {
+color: #FFF8EF;
+}
+
+/* Utilisez vos couleurs personnalisées */
+.hover\:bg-blue-600:hover {
+  background-color: var(--color-primary);
+}
+
+.text-white {
+  color: white;
+}
+
+.beige {
+    background-color: #FFF8EF;
+    color: #1F2937;
+}
+
+.beige:hover {
+    background-color: #EDE6D9;
+}
+
+.bleu {
+    background-color: #2F48C9;
+}
+.bleuAlone {
+    background-color: #2F48C9;
+}
+
+.bleu:hover {
+    background-color: #1F336D;
+}
+
+@font-face {
+    font-family: 'Astron';
+    src: url('../styles/fonts/Astron.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Arapey';
+    src: url('../styles/fonts/Arapey-Regular.ttf') format('truetype');
+}
+
+h1 a, h2{
+     font-family: 'Astron', sans-serif !important;
+}
+
+
+/* Ajoutez d'autres styles personnalisés si nécessaire */

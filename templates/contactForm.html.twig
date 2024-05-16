@@ -1,0 +1,133 @@
+{% include 'partials/_navbar.html.twig' %}
+
+    <style>
+    .espace-footer {
+    margin-top: 350px; /* Ajustez la valeur selon vos besoins */
+}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: none;
+            width: 80%;
+            max-width: 500px; /* Ajustez selon vos besoins */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Style pour le bouton de retour à l'accueil */
+        .modal-content a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content a:hover {}
+
+        .beige {
+            background-color: #FFF8EF;
+            color: #1F2937;
+        }
+
+        .beige:hover {
+            background-color: #EDE6D9;
+        }
+    </style>
+
+
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8">
+        <h1 class="text-3xl font-semibold mb-4">Formulaire de Contact</h1>
+        <form action="#" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label for="start_date" class="block text-gray-700 font-bold mb-2">Date de début de location :</label>
+                <input type="date" id="start_date" name="start_date" class="form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+                <label for="end_date" class="block text-gray-700 font-bold mb-2">Date de fin de location :</label>
+                <input type="date" id="end_date" name="end_date" class="form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-bold mb-2">Message :</label>
+                <textarea id="message" name="message" rows="4" class="form-textarea w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Votre message ici..." required></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" class="form-checkbox text-blue-500" required>
+                    <span class="ml-2 text-gray-700">Je consens à partager mes informations de profil.</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bleu text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Envoyer</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popup -->
+    <div id="myModal" class="modal hidden">
+        <div class="modal-content bg-white p-8 rounded-lg shadow-lg">
+            <span class="close">&times;</span>
+            <p class="text-lg font-semibold">Votre demande a bien été prise en compte !</p>
+            <a href="{{ path('carsPage') }}" class="block mt-4 px-4 py-2 text-white font-semibold rounded-lg text-center bleu transition duration-300">Voir les voitures</a>
+        </div>
+    </div>
+
+
+
+    {% include 'partials/_footer.html.twig' %}
+</body>
+
+</html>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            modal.style.display = "block";
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>

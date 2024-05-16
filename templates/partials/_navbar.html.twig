@@ -1,30 +1,40 @@
 {% block stylesheets %}
 	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link href="../../css/app.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ asset('../assets/images/favicon.ico') }}">
+	<link rel="stylesheet" href="{{ asset('../assets/css/app.css') }}">
+
 {% endblock %}
 
-<header class="bg-gray-800 text-white py-4">
+<header class="bleuAlone text-white py-4">
 	<div class="container mx-auto flex justify-between items-center px-4">
 		<h1 class="text-3xl font-bold">
-			{% block header %}Prestige Rent
+			{% block header %}
+				<a href="{{ path('index') }}">PrestigeRent</a>
 			{% endblock %}
 		</h1>
 		<nav>
 			<ul class="flex gap-4">
 				<li>
-					<a href="#" class="hover:text-gray-300">Louer ma voiture</a>
-				</li>
-				<li>
 					<a href="{{ path('carsPage') }}" class="hover:text-gray-300">Accueil</a>
 				</li>
 				<li>
-					<a href="{{ path('favorite_cars') }}" class="hover:text-gray-300">Mes favoris</a>
-				</li>
-				
-				<li>
 					<a href="{{ path('profil_page') }}" class="hover:text-gray-300">Mon profil</a>
 				</li>
+				{% if not app.user %}
+					<li>
+						<a href="{{ path('app_register') }}" class="hover:text-gray-300">S'inscrire</a>
+					</li>
+				{% endif %}
 				<li>
-					<a href="{{ path('app_register') }}" class="hover:text-gray-300">S'inscrire</a>
+					{% if app.user %}
+						<a href="{{ path('favorite_cars') }}" class="hover:text-gray-300">Mes favoris</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if app.user %}
+						<a href="{{ path('addCars_page') }}" class="hover:text-gray-300">Ajouter ma voiture</a>
+					{% endif %}
 				</li>
 				<li>
 					{% if app.user %}

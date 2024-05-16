@@ -6,11 +6,11 @@
 2. **Puller le projet**
    - Clonez le dépôt du projet en utilisant la commande suivante :
      ```bash
-     git clone <URL-du-repo>
+     git clone (https://github.com/ThysmaJS/prestigeRent.git)
      ```
    - Accédez au répertoire du projet :
      ```bash
-     cd <nom-du-repertoire>
+     cd <chemin/jusqu'au/projet>
      ```
 
 3. **Installer les conteneurs Docker**
@@ -38,8 +38,6 @@
      ```
 
 ---
-
-Bonne visite ! 🎉
 
 
 ## II. Accès à la Base de Données (BDD)

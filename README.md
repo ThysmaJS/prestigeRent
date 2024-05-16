@@ -1,13 +1,46 @@
-# Projet Prestige Rent
+## I. Instructions pour démarrer le projet
 
-## I. Lancement du Projet
+1. **Installer Docker Desktop**
+   - Assurez-vous que Docker Desktop est installé sur votre machine. [Télécharger Docker Desktop](https://www.docker.com/products/docker-desktop).
 
-1. Assurez-vous d'avoir DockerDesktop installé sur votre machine.
-2. Clonez le projet et naviguez jusqu'à la racine.
-3. Utilisez la commande suivante pour démarrer les services en arrière-plan :
-    ```bash
-    docker-compose up -d
-    ```
+2. **Puller le projet**
+   - Clonez le dépôt du projet en utilisant la commande suivante :
+     ```bash
+     git clone <URL-du-repo>
+     ```
+   - Accédez au répertoire du projet :
+     ```bash
+     cd <nom-du-repertoire>
+     ```
+
+3. **Installer les conteneurs Docker**
+   - Dans le terminal du projet, tapez la commande suivante pour installer les conteneurs Docker :
+     ```bash
+     docker-compose up -d
+     ```
+
+4. **Charger les données du site**
+   - Utilisez la commande Symfony pour charger les données :
+     ```bash
+     symfony console d:f:l
+     ```
+
+5. **Lancer le serveur en local**
+   - Pour démarrer le serveur Symfony en arrière-plan :
+     ```bash
+     symfony serve -d
+     ```
+
+6. **Lancer les fonctionnalités du site**
+   - Enfin, utilisez Yarn pour activer toutes les fonctionnalités du site :
+     ```bash
+     yarn watch
+     ```
+
+---
+
+Bonne visite ! 🎉
+
 
 ## II. Accès à la Base de Données (BDD)
 
@@ -26,4 +59,4 @@
 
 **Note :** Assurez-vous que DockerDesktop est en cours d'exécution avant de lancer le projet.
 
-N'hésitez pas à contribuer, signaler des problèmes ou demander de l'aide si nécessaire. Bon codage !
+Bonne visite ! 🎉

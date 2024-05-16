@@ -1,4 +1,27 @@
-<footer>
-    <p>Droits d'auteur &copy;{{ "now"|date("Y") }}</p>
+<footer class="bleuAlone text-white py-8">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-bold mb-4">À propos</h3>
+                <p>Transformez vos rêves en réalité : louez la voiture du luxe parfaite pour chaque occasion, directement auprès de passionnés comme vous.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Liens utiles</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Contact</h3>
+                <p>Adresse : 684 Av. du Club Hippique, 13090 Aix-en-Provence</p>
+                <p>Téléphone : 06.06.06.06.06</p>
+                <p>Email : prestige@rent.com</p>
+            </div>
+        </div>
+        <hr class="border-white my-6">
+        <p class="text-center">&copy; {{ "now"|date("Y") }} Tous droits réservés.</p>
+    </div>
 </footer>
-<script src="scripts.js"></script>

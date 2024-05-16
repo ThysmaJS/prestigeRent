@@ -1,41 +1,48 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
-{% endblock %}
-<header>
-	<h1>
-		{% block header %}Prestige Rent
-		{% endblock %}
-	</h1>
-	<nav>
-		<ul>
-			<li>
-				<a href="#">Louer ma voiture</a>
-			</li>
-			<li>
-				<a href="#">Accueil</a>
-			</li>
-			<li>
-				<a href="#">Historique</a>
-			</li>
-			<li>
-				<a href="#">Favoris</a>
-			</li>
-			<li>
-				<a href="#">Messages</a>
-			</li>
-			<li>
-				<a href="{{ path('profil_page') }}">Mon profil</a>
-			</li>
-			<li>
-				<a href="{{ path('app_register') }}">S'inscrire</a>
-			</li>
-			<li>
-				{% if app.user %}
-					<a href="{{ path('app_logout') }}">Déconnexion</a>
-				{% endif %}
-			</li>
-		</ul>
-	</nav>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link href="../../css/app.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ asset('../assets/images/favicon.ico') }}">
+	<link rel="stylesheet" href="{{ asset('../assets/css/app.css') }}">
 
+{% endblock %}
+
+<header class="bleuAlone text-white py-4">
+	<div class="container mx-auto flex justify-between items-center px-4">
+		<h1 class="text-3xl font-bold">
+			{% block header %}
+				<a href="{{ path('index') }}">PrestigeRent</a>
+			{% endblock %}
+		</h1>
+		<nav>
+			<ul class="flex gap-4">
+				<li>
+					<a href="{{ path('carsPage') }}" class="hover:text-gray-300">Accueil</a>
+				</li>
+				<li>
+					<a href="{{ path('profil_page') }}" class="hover:text-gray-300">Mon profil</a>
+				</li>
+				{% if not app.user %}
+					<li>
+						<a href="{{ path('app_register') }}" class="hover:text-gray-300">S'inscrire</a>
+					</li>
+				{% endif %}
+				<li>
+					{% if app.user %}
+						<a href="{{ path('favorite_cars') }}" class="hover:text-gray-300">Mes favoris</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if app.user %}
+						<a href="{{ path('addCars_page') }}" class="hover:text-gray-300">Ajouter ma voiture</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if app.user %}
+						<a href="{{ path('app_logout') }}" class="hover:text-gray-300">Déconnexion</a>
+					{% endif %}
+				</li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <hr class="separator">

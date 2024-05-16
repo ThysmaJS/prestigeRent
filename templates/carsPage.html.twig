@@ -1,58 +1,304 @@
 {% include 'partials/_navbar.html.twig' %}
-
+<link href="../../css/app.css" rel="stylesheet">
 
 {% block content %}
-    <div class="navbar">
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/berline_bar.png') }}" alt="Berline">
-            <span class="image-alt">Berline</span>
-        </a>
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>PrestigeRent</title>
+		</head>
+		<style>
+			.beige {
+				background-color: #FFF8EF;
+				color: #1F2937;
+			}
 
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/citadine_bar.png') }}" alt="Citadine">
-            <span class="image-alt">Citadine</span>
-        </a>
+			.beige:hover {
+				background-color: #EDE6D9;
+			}
+		</style>
+		<body class="bg-gray-100">
+			<main class="container mx-auto my-8">
+				<div class="mx-auto flex mb-8">
+					<div id="car-type-buttons" class="flex mx-auto justify-center gap-4">
+						<a href="{{ path('filterCars', {'type': 'berline'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/berline_bar.svg') }}" alt="Berline" class="w-20 h-20">
+							<span class="image-alt">Berline</span>
+						</a>
+						<a href="{{ path('filterCars', {'type': 'citadine'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/citadine_bar.svg') }}" alt="Citadine" class="w-20 h-20">
+							<span class="image-alt">Citadine</span>
+						</a>
+						<a href="{{ path('filterCars', {'type': 'collection'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/collection_bar.svg') }}" alt="Collection" class="w-20 h-20">
+							<span class="image-alt">Collection</span>
+						</a>
+						<a href="{{ path('filterCars', {'type': 'coupe'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/coupe_bar.svg') }}" alt="Coupe" class="w-20 h-20">
+							<span class="image-alt">Coupe</span>
+						</a>
+						<a href="{{ path('filterCars', {'type': 'limousine'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/limousine_bar.svg') }}" alt="Limousine" class="w-20 h-20">
+							<span class="image-alt">Limousine</span>
+						</a>
+						<a href="{{ path('filterCars', {'type': 'sportive'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/sportive_bar.svg') }}" alt="Sportive" class="w-20 h-20">
+							<span class="image-alt">Sportive</span>
+						</a>
+						<a href="{{ path('filterCars', {'type': 'tout_terrain'}) }}" id="car-type-buttons" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/tout_terrain_bar.svg') }}" alt="Tout terrain" class="w-20 h-20">
+							<span class="image-alt">Tout terrain</span>
+						</a>
+						<a href="#" id="event-toggle-button" class="flex flex-col items-center mx-5">
+							<img src="{{ asset('../assets/images/evenement.svg') }}" alt="event" class="w-20 h-20">
+							<span class="image-alt">Événements</span>
+						</a>
+					</div>
+					<div id="event-buttons" class="flex justify-center mx-auto gap-4" style="display: none;">
 
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/collection_bar.png') }}" alt="Collection">
-            <span class="image-alt">Collection</span>
-        </a>
 
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/coupe_bar.png') }}" alt="Coupe">
-            <span class="image-alt">Coupe</span>
-        </a>
+						<a href="{{ path('filterCars', {'event': 'Anniversaire'}) }}" class="flex flex-col items-center mx-5 event-button">
+							<img src="{{ asset('../assets/images/gateau_danniversaire.svg') }}" alt="event" class="w-20 h-20">
+							<span class="image-alt">Anniversaire</span>
+						</a>
+						<a href="{{ path('filterCars', {'event': 'Mariage'}) }}" class="flex flex-col items-center mx-5 event-button">
+							<img src="{{ asset('../assets/images/mariage.svg') }}" alt="event" class="w-20 h-20">
+							<span class="image-alt">Mariage</span>
+						</a>
+						<a href="{{ path('filterCars', {'event': 'Buisness'}) }}" class="flex flex-col items-center mx-5 event-button">
+							<img src="{{ asset('../assets/images/buisness.svg') }}" alt="event" class="w-20 h-20">
+							<span class="image-alt">Buisness</span>
+						</a>
+						<a href="{{ path('filterCars', {'event': 'EVG'}) }}" class="flex flex-col items-center mx-5 event-button">
+							<img src="{{ asset('../assets/images/evg.svg') }}" alt="EVG" class="w-20 h-20">
+							<span class="image-alt">EVG</span>
+						</a>
+						<a href="#" id="car-toggle-button" class="flex flex-col items-center mx-5" style="display: none;">
+							<img src="{{ asset('../assets/images/voiture.svg') }}" alt="car" class="w-20 h-20">
+							<span class="image-alt">Voitures</span>
+						</a>
+					</div>
+				</div>
 
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/limousine_bar.png') }}" alt="Limousine">
-            <span class="image-alt">Limousine</span>
-        </a>
+				<body class="bg-gray-100">
+					<main
+						class="container mx-auto my-8 flex">
+						<!-- Filtres -->
+						<div class="w-1/4 mr-8">
+							<form
+								action="{{ path('filterCars') }}" method="get" class="bg-gray-100 p-4 rounded-lg">
+								<!-- Titre des filtres -->
+								<h2 class="text-lg font-semibold mb-4 fs-3 border-b-2 border-gray-300 py-2">Filtres</h2>
 
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/sportive_bar.png') }}" alt="Sportive">
-            <span class="image-alt">Sportive</span>
-        </a>
+								<!-- Barre de recherche -->
+								<div class="mb-4">
+									<input type="text" name="search" id="search" placeholder="Nom de la voiture" class="form-input rounded-lg border border-gray-300 px-4 py-2 w-full">
+								</div>
 
-        <a href="#" class="nav-item">
-            <img src="{{ asset('../assets/images/tout_terrain_bar.png') }}" alt="Tout terrain">
-            <span class="image-alt">Tout terrain</span>
-        </a>
-    </div>
-    <hr class="separator">
+								<!-- Filtre par nombre de portes -->
+								<div class="flex flex-col mb-4">
+									<h3 class="text-lg font-semibold mb-2">Nombre de portes</h3>
+									<div class="flex flex-col space-y-2">
+										<div class="flex items-center space-x-2">
+											<input type="checkbox" name="doors" value="3" id="doors_3" class="form-checkbox rounded text-blue-500">
+											<label for="doors_3">3 portes</label>
+										</div>
+										<div class="flex items-center space-x-2">
+											<input type="checkbox" name="doors" value="5" id="doors_5" class="form-checkbox rounded text-blue-500">
+											<label for="doors_5">5 portes</label>
+										</div>
+									</div>
+								</div>
 
-    {# Affichage des images dynamiques #}
-    <div class="photo-gallery">
-        {% for image in images %}
-            <div class="photo-card">
-                <img src="{{ asset('images/' ~ image.imagePath) }}" alt="{{ image.title }}">
-                <div class="photo-details">
-                    <h3>{{ image.title }}</h3>
-                    <p>{{ image.description }}</p>
-                    <p>Prix: ${{ image.price }}</p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-{% endblock %}
-{% include 'partials/_footer.html.twig' %}
+								<!-- Filtre par type de moteur -->
+								<div class="flex flex-col mb-4">
+									<h3 class="text-lg font-semibold mb-2">Type de moteur</h3>
+									<div class="flex flex-col space-y-2">
+										<div class="flex items-center space-x-2">
+											<input type="checkbox" name="engineTypes" value="Diesel" id="engineType_diesel" class="form-checkbox rounded text-blue-500">
+											<label for="engineType_diesel">Diesel</label>
+										</div>
+										<div class="flex items-center space-x-2">
+											<input type="checkbox" name="engineTypes" value="Essence" id="engineType_essence" class="form-checkbox rounded text-blue-500">
+											<label for="engineType_essence">Essence</label>
+										</div>
+										<div class="flex items-center space-x-2">
+											<input type="checkbox" name="engineTypes" value="Electrique" id="engineType_electrique" class="form-checkbox rounded text-blue-500">
+											<label for="engineType_electrique">Électrique</label>
+										</div>
+									</div>
+								</div>
 
+								<!-- Filtre par kilométrage -->
+								<div class="flex flex-col mb-4">
+									<h3 class="text-lg font-semibold mb-2">Kilométrage</h3>
+									<div class="flex flex-col space-y-2">
+										<div class="flex items-center space-x-2">
+											<label for="minKilometer" class="w-16">Min</label>
+											<input type="number" name="minKilometer" id="minKilometer" placeholder="KmMin" class="form-input rounded-lg border border-gray-300 px-4 py-2 ">
+										</div>
+										<div class="flex items-center space-x-2">
+											<label for="maxKilometer" class="w-16">Max</label>
+											<input type="number" name="maxKilometer" id="maxKilometer" placeholder="KmMax" class="form-input rounded-lg border border-gray-300 px-4 py-2">
+										</div>
+									</div>
+								</div>
+
+								<!-- Bouton de soumission -->
+								<div class="flex justify-center">
+									<button type="submit" class="bleu text-white py-2 px-4 rounded-lg w-full">Filtrer</button>
+								</div>
+								<div class="boutonReset">
+									<button type="button" onclick="resetFilters()" class="right-0 beige beigeHover text-white py-2 px-4 rounded-lg mt-4 col-span-2 w-full">Réinitialiser les filtres</button>
+								</div>
+							</form>
+
+						</div>
+
+						<!-- Cartes de voiture -->
+						<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 flex-1">
+							{% for car in cars %}
+								<div class="bg-white shadow-md rounded-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-lg relative">
+									<a href="{{ path('carDetails', {'id': car.id}) }}" class="block">
+										{% if car.images|length > 0 %}
+											<img src="{{ asset('images/' ~ car.images[0].imagePath) }}" alt="{{ car.title }}" class="w-full h-48 object-cover">
+										{% else %}
+											<img src="{{ asset('../assets/images/default_car_image.png') }}" alt="Image par défaut" class="w-full h-48 object-cover">
+										{% endif %}
+									</a>
+									<div class="p-4">
+										<h3 class="text-xl font-semibold text-gray-800">{{ car.title }}</h3>
+										<p class="text-gray-600">{{ car.description }}</p>
+									</div>
+									<!-- Bouton pour ajouter aux favoris -->
+									<button
+										class="heart-button absolute top-2 right-2 bg-white rounded-full p-2 shadow-md hover:bg-gray-200 focus:outline-none" data-car-id="{{ car.id }}">
+										<!-- Icône de cœur -->
+										{% if car.id in app.session.get('favoriteCarIds', []) %}
+											<img src="{{ asset('../assets/images/coeurPlein.png') }}" alt="Coeur plein" class="w-6 h-6">
+										{% else %}
+											<img src="{{ asset('../assets/images/coeurVide.png') }}" alt="Coeur vide" class="w-6 h-6">
+										{% endif %}
+									</button>
+								</div>
+							{% endfor %}
+						</div>
+
+					</main>
+				{% endblock %}
+			</body>
+		</html>
+	</body>
+	</html>
+	</main>
+				{% include 'partials/_footer.html.twig' %}
+				<script>
+// Définir les chemins vers l'ajout et la suppression des favoris
+var addToFavoritesUrl = "{{ path('add_to_favorites', {'id': 'CAR_ID'}) }}";
+var removeFromFavoritesUrl = "{{ path('remove_from_favorites', {'id': 'CAR_ID'}) }}";
+
+// Fonction pour réinitialiser les filtres
+function resetFilters() {
+window.location.href = window.location.pathname;
+}
+
+// Sélectionnez tous les boutons avec la classe "heart-button"
+var heartButtons = document.querySelectorAll('.heart-button');
+
+heartButtons.forEach(function (button) {
+button.addEventListener('click', function () { // Récupérer l'ID de la voiture à partir de l'attribut data-car-id
+var carId = this.getAttribute('data-car-id');
+
+if (carId) { // Déterminer si la voiture est actuellement dans les favoris
+var isFavorite = this.querySelector('img').getAttribute('src') === "{{ asset('../assets/images/coeurPlein.png') }}";
+
+// Définir l'URL en fonction de l'état actuel des favoris
+var url = isFavorite ? removeFromFavoritesUrl : addToFavoritesUrl;
+
+// Effectuer une requête AJAX pour ajouter ou retirer la voiture des favoris
+fetch(url.replace('CAR_ID', carId), {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+'X-Requested-With': 'XMLHttpRequest'
+},
+credentials: 'same-origin'
+}).then(function (response) { // Vérifiez si la requête a réussi
+if (! response.ok) {
+throw new Error('Network response was not ok');
+}
+// Analysez la réponse JSON
+return response.json();
+}).then(function (data) { // Mettre à jour l'icône du cœur et le message d'alt en fonction de la réponse
+var heartIcon = button.querySelector('img');
+if (data.success) {
+if (isFavorite) { // La voiture a été retirée des favoris
+heartIcon.setAttribute('src', "{{ asset('../assets/images/coeurVide.png') }}");
+heartIcon.alt = "Coeur vide";
+} else { // La voiture a été ajoutée aux favoris
+heartIcon.setAttribute('src', "{{ asset('../assets/images/coeurPlein.png') }}");
+heartIcon.alt = "Coeur plein";
+}
+} else { // Afficher un message d'erreur ou de succès si nécessaire
+}
+}).catch(function (error) { // Gérer les erreurs
+console.error('There was a problem with the fetch operation:', error);
+});
+} else {
+console.error('Car id is missing from the heart button');
+}
+});
+});
+
+// Gestion de l'affichage des boutons d'événement et de type de voiture
+var eventToggleButton = document.getElementById('event-toggle-button');
+var carToggleButton = document.getElementById('car-toggle-button');
+var eventButtonsContainer = document.getElementById('event-buttons');
+var carTypeButtonsContainer = document.getElementById('car-type-buttons');
+
+eventToggleButton.addEventListener('click', function () {
+if (eventButtonsContainer.style.display === 'flex') {
+eventButtonsContainer.style.display = 'none';
+carTypeButtonsContainer.style.display = 'flex';
+carToggleButton.style.display = 'none'; // Assurez-vous que le bouton "Voiture" est masqué
+} else {
+eventButtonsContainer.style.display = 'flex';
+carTypeButtonsContainer.style.display = 'none';
+carToggleButton.style.display = 'inline-flex'; // Affichez le bouton "Voiture" lors de l'affichage des événements
+}
+});
+
+carToggleButton.addEventListener('click', function () {
+if (carTypeButtonsContainer.style.display === 'flex') {
+carTypeButtonsContainer.style.display = 'none';
+eventButtonsContainer.style.display = 'flex';
+eventToggleButton.style.display = 'none';
+} else {
+carTypeButtonsContainer.style.display = 'flex';
+eventButtonsContainer.style.display = 'none';
+eventToggleButton.style.display = 'inline-flex';
+}
+});
+
+// Gestion de la recherche en temps réel
+var searchInput = document.getElementById('search');
+
+searchInput.addEventListener('input', function (event) {
+var searchTerm = event.target.value.trim();
+// Récupérer le terme de recherche
+
+// Envoyer une requête AJAX pour récupérer les voitures correspondant au terme de recherche
+fetch('{{ path('filterCars') }}?search=' + searchTerm).then(function (response) {
+if (! response.ok) {
+throw new Error('Network response was not ok');
+}
+return response.json();
+}).then(function (data) {
+// Mettre à jour la liste de voitures affichées avec les résultats de la recherche
+// Vous pouvez utiliser data.cars pour obtenir les voitures correspondantes
+}).catch(function (error) {
+console.error('There was a problem with the fetch operation:', error);
+});
+});</script>

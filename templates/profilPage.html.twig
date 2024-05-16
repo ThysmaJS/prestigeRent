@@ -1,26 +1,62 @@
 {% include 'partials/_navbar.html.twig' %}
+		<style>
+			.beige {
+				background-color: #FFF8EF;
+				color: #1F2937;
+			}
 
-<body>
-    <div class="container">
-        <h1>Gestion de Profil</h1>
-        <div class="profile">
-            <div class="avatar">
-            </div>
+			.beige:hover {
+				background-color: #EDE6D9;
+			}
+		</style>
+<body class="bg-gray-200">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-semibold mb-8">Gestion de Profil</h1>
+        
+        <!-- Section du profil -->
+        <div class="flex items-center mb-8 bg-white p-6 rounded-lg shadow-md">
+            <!-- Avatar -->
+<div class="w-20 h-20 bg-gray-300 rounded-full mr-4 flex justify-center items-center overflow-hidden">
+    <img src="{{ asset('../assets/images/pdp.jpg') }}" class="rounded-full w-full h-full object-cover" alt="Profile Picture">
+</div>
+
+            <!-- Détails -->
             <div class="details">
-                <h2>{{ user.username }}</h2>
-                <p>Email: {{ user.email }}</p>
+                <h2 class="text-xl font-semibold">{{ user.username }}</h2>
+                <p class="text-gray-600">Email: {{ user.email }}</p>
             </div>
         </div>
-        <div class="edit-profile">
-            <h2>Modifier le profil</h2>
+        
+        <!-- Section de modification du profil -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4">Modifier le profil</h2>
             <form action="/update_profile" method="POST">
-                <label for="name">Pseudo:</label>
-                <input type="text" id="name" name="name" value="{{ user.username }}" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ user.email }}" required>
-                <button type="submit">Enregistrer</button>
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-semibold mb-2">Pseudo:</label>
+                    <input type="text" id="name" name="name" value="{{ user.username }}" required class="form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" autocomplete="off">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-semibold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" required class="form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" autocomplete="off">
+                </div>
+                <button type="submit" class="bleu text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Enregistrer
+                </button>
             </form>
+        </div>
+
+        <!-- Liens vers les favoris et les annonces -->
+        <div class="flex justify-between">
+            <a href="{{ path('favorite_cars') }}" class="beige text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300">
+                Mes favoris
+            </a>
+            <a href="#" class="beige text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300">
+                Mes annonces
+            </a>
         </div>
     </div>
 </body>
+<div class="espace-footer">
+    {% include 'partials/_footer.html.twig' %}
+    </div>
 </html>

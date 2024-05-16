@@ -1,22 +1,172 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}PrestigeRent{% endblock %}</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
-    {% endblock %}
-</head>
-<body class="HomePage">
-    <video class="background-video" autoplay muted loop>
-        <source src="{{ asset('../assets/styles/videos/homepageBackground.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <header class="HomePage-header">
-        <h1>{{ block('title') }}</h1>
-        <p>Conduisez l'excellence !</p>
-        <div class="HomePage-button"><a href="{{ path('carsPage') }}">Notre sélection</a></div>
-    </header>
-</body>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}PrestigeRent
+			{% endblock %}
+		</title>
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+		<link rel="icon" type="image/png" href="{{ asset('../assets/images/favicon.ico') }}">
+{% block stylesheets %}
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link href="../../css/app.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ asset('../assets/images/favicon.ico') }}">
+	<link rel="stylesheet" href="{{ asset('../assets/css/app.css') }}">
+
+{% endblock %}
+		<style>
+			.background-video {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				z-index: -1; /* Place la vidéo en arrière-plan */
+			}
+
+			.bg-orange-300 {
+				background-color: #ffedd5;
+			}
+
+			.bleu {
+				background-color: #2F48C9;
+			}
+			.bleuAlone {
+				background-color: #2F48C9;
+			}
+
+			.bleu:hover {
+				background-color: #1F336D;
+			}
+		</style>
+	</head>
+
+	<body class="HomePage">
+		<video class="background-video" autoplay muted loop>
+			<source src="{{ asset('../assets/styles/videos/homepageBackground.mp4') }}" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+		<header class="HomePage-header flex flex-col items-center justify-center h-screen text-white relative" style="background-image: url('chemin/vers/votre/video-background.mp4');">
+			<div class="absolute inset-0 bg-black opacity-50"></div>
+			<div class="max-w-lg text-center relative z-10">
+				<h1 class="text-4xl font-bold mb-4"><a>PrestigeRent</a></h1>
+				<p class="text-lg mb-8">Transformez vos rêves en réalité : louez la voiture du luxe parfaite pour chaque occasion, directement auprès de passionnés comme vous.</p>
+				<div class="HomePage-button">
+					<a href="{{ path('carsPage') }}" class="inline-block px-8 py-3 text-white font-semibold rounded-md shadow-md bleu transition duration-300">Notre sélection</a>
+				</div>
+			</div>
+		</header>
+
+
+		<!-- Qui sommes nous ? -->
+		<section class="bg-white py-12">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-semibold text-center mb-8">Qui sommes nous ?</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+					<div>
+						<img src="{{ asset('../assets/images/homePicture.svg') }}" alt="Qui sommes nous" class="w-full rounded-lg">
+					</div>
+					<div>
+						<h2 class="text-3xl font-semibold mb-4">Chez Prestigerent</h2>
+						<p class="text-lg">Nous sommes bien plus qu'une simple entreprise. Nous sommes une équipe de passionnés dédiés à offrir à nos clients des expériences uniques, accessibles et personnalisées. Pour nous, chaque trajet est une promesse de voyage, une occasion où le luxe se transforme en une expérience inoubliable.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Nos valeurs -->
+		<section class="bg-gray-100 py-12">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-semibold text-center mb-8">Nos valeurs</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div class="bg-white shadow-lg rounded-lg p-6">
+						<h3 class="text-lg font-semibold mb-4">Responsabilité</h3>
+						<p class="text-base text-gray-700">Nous nous engageons à promouvoir la durabilité et à contribuer positivement à notre communauté et à notre environnement.</p>
+					</div>
+					<div class="bg-white shadow-lg rounded-lg p-6">
+						<h3 class="text-lg font-semibold mb-4">Exclusivité</h3>
+						<p class="text-base text-gray-700">Nous sélectionnons des véhicules offrant à chaque client une expérience unique sur les voitures les plus convoitées du marché.</p>
+					</div>
+					<div class="bg-white shadow-lg rounded-lg p-6">
+						<h3 class="text-lg font-semibold mb-4">Sécurité et fiabilité</h3>
+						<p class="text-base text-gray-700">Agir avec intégrité et transparence dans toutes nos interactions avec les clients, en fournissant des informations claires et précises sur nos services, nos tarifs et nos politiques de location.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Engagement RSE -->
+		<section class="bg-white py-12">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-semibold text-center mb-8">Engagement RSE</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div class="bg-gray-100 shadow-lg rounded-lg p-6">
+						<h3 class="text-lg font-semibold mb-4">Durabilité environnementale</h3>
+						<p class="text-base">PrestigeRent s'engage à réduire son empreinte carbone en offrant des options de location de voitures dont des véhicules électriques et hybrides, limitant ainsi la production de nouveaux véhicules.</p>
+					</div>
+					<div class="bg-gray-100 shadow-lg rounded-lg p-6">
+						<h3 class="text-lg font-semibold mb-4">Responsabilité sociale</h3>
+						<p class="text-base">PrestigeRent s'engage à soutenir les particuliers en leur proposant une méthode de location qui simplifie leur vie et améliore celle des autres.</p>
+					</div>
+					<div class="bg-gray-100 shadow-lg rounded-lg p-6">
+						<h3 class="text-lg font-semibold mb-4">Éthique des affaires</h3>
+						<p class="text-base">PrestigeRent s'engage à agir de manière éthique et transparente dans toutes ses opérations, en respectant les lois et les réglementations en vigueur, en protégeant la confidentialité des données de ses clients et en garantissant la sécurité de ses clients.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- Avis clients -->
+		<section class="bg-gray-100 py-12">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-semibold text-center mb-8">Avis clients</h2>
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<!-- Avis 1 -->
+					<div class="border border-gray-200 rounded-lg p-6">
+						<div class="flex items-center mb-4">
+							<img src="{{ asset('../assets/images/avis/pdp1.jpg') }}" alt="Client 1" class="w-12 h-12 rounded-full">
+							<div class="ml-4">
+								<h3 class="text-lg font-semibold">Louis Moreau</h3>
+								<p class="text-gray-500">CEO, Company XYZ</p>
+							</div>
+						</div>
+						<p class="text-gray-700">"Une expérience de location incroyable avec PrestigeRent. Voitures de qualité et service client exceptionnel. Je recommande vivement!"</p>
+					</div>
+					<!-- Avis 2 -->
+					<div class="border border-gray-200 rounded-lg p-6">
+						<div class="flex items-center mb-4">
+							<img src="{{ asset('../assets/images/avis/pdp2.jpg') }}" alt="Client 2" class="w-12 h-12 rounded-full">
+							<div class="ml-4">
+								<h3 class="text-lg font-semibold">Lucas Mercier</h3>
+								<p class="text-gray-500">Designer, Creative Studio</p>
+							</div>
+						</div>
+						<p class="text-gray-700">"Des voitures de luxe à des prix abordables. J'ai adoré chaque instant de ma location avec PrestigeRent. Merci pour cette expérience!"</p>
+					</div>
+					<!-- Avis 3 -->
+					<div class="border border-gray-200 rounded-lg p-6">
+						<div class="flex items-center mb-4">
+							<img src="{{ asset('../assets/images/avis/pdp3.jpg') }}" alt="Client 3" class="w-12 h-12 rounded-full">
+							<div class="ml-4">
+								<h3 class="text-lg font-semibold">Émilie Lambert</h3>
+								<p class="text-gray-500">Manager, Tech Company</p>
+							</div>
+						</div>
+						<p class="text-gray-700">"Des services de location exceptionnels. Personnel amical et processus de réservation simple. Je reviendrai certainement pour mes futurs besoins de location de voiture."</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+<div class="espace-footer">
+    {% include 'partials/_footer.html.twig' %}
+    </div>
+	</body>
+
 </html>

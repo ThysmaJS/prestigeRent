@@ -1,31 +1,38 @@
 {% include 'partials/_navbar.html.twig' %}
 
-<body>
-    <div class="registration-form">
-        <h1>Inscription</h1>
+<body class="bg-gray-200">
+    <div class="flex justify-center items-center mt-5">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+            <h1 class="text-2xl font-semibold text-center mb-4">Inscription</h1>
 
-        {% for flash_error in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-        {% endfor %}
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded" role="alert">
+                    {{ flash_error }}
+                </div>
+            {% endfor %}
 
-        {{ form_errors(registrationForm) }}
+            {{ form_errors(registrationForm) }}
 
-        {{ form_start(registrationForm) }}
-            <div class="form-group">
-                {{ form_row(registrationForm.username, {'attr': {'class': 'form-control', 'placeholder': 'Pseudo'}}) }}
-            </div>
-            <div class="form-group">
-                {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
-            </div>
-            <div class="form-group">
-                {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
-            </div>
-            <div class="form-check">
-                {{ form_row(registrationForm.agreeTerms, {'label': 'je souscris aux conditions'}) }}
-            </div>
+            {{ form_start(registrationForm) }}
+                <div class="mb-4">
+                    {{ form_row(registrationForm.username, {'attr': {'class': 'form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline', 'placeholder': 'Pseudo'}}) }}
+                </div>
+                <div class="mb-4">
+                    {{ form_row(registrationForm.email, {'attr': {'class': 'form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline', 'placeholder': 'Email'}}) }}
+                </div>
+                <div class="mb-4">
+                    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-input w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline', 'placeholder': 'Mot de passe'}}) }}
+                </div>
+<div class="mb-4 inline-flex items-center">
+    {{ form_row(registrationForm.agreeTerms, {'label': 'Je souscris aux conditions', 'attr': {'class': 'form-checkbox m-3'}}) }}
+</div>
 
-            <button type="submit" class="btn btn-primary">S'inscrire</button>
-        {{ form_end(registrationForm) }}
+
+                <button type="submit" class="bleu text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+                    S'inscrire
+                </button>
+            {{ form_end(registrationForm) }}
+        </div>
     </div>
 </body>
 </html>
